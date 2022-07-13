@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Results</title>
+</head>
+<body>
+    <div class="table-data">
+<h2>User Table</h2>
+<table border="1">
+    <tr>
+        <th>#</th>
+        <th>User</th>
+        <th>Details</th>
+    </tr>
+    
+    <%
+    if(userData.length!=0){
+    var i=1;
+    userData.forEach(function(data){
+    %>
+    <tr>
+        <td><%=i; %></td>
+        <td><%=data.User %></td>
+        <td><%=data.Details %></td>
+    </tr>
+    <%  i++; }) %>
+    <% } else{ %>
+        <tr>
+            <td colspan="7">No Data Found</td>
+        </tr>
+    <% } %>
+</table>
+    </div>
+</body>
+</html>
