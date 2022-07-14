@@ -78,13 +78,14 @@ app.get('/result', function(req,res) {
   var sql = `SELECT * FROM users WHERE User='${search}';`; // SQL query syntax checking for matching user
   connection.query(sql, function(err, results, fields){ // do the query
     if (err) handleDisconnect();
+    console.log(err.sql);
     if (results) {
       res.render("/www/views/user-list.ejs", { userData: results }, function(err,html){ // render output as table
         if (err) throw err;
         res.send(tpl('Result', html));
       });
     } else {
-      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM (╯°□°)╯︵ ┻━┻ WHERE User=\'' + search + '\';</b>')); // display failed sql query
+      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM (╯°□°)╯︵ ┻━┻ WHERE User=\'' + search + '\';</b>')); // display failed sql query┬─┬﻿
     }
   });
 });
