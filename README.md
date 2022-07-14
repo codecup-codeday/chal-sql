@@ -6,5 +6,3 @@ docker build -t codecup-sql .
 docker run -p 8080:8080 codecup-sql
 ```
 localhost:8080
-
-' or '1

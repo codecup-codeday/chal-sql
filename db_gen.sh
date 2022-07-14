@@ -1,7 +1,7 @@
 #start, set up mysql database
 #create user 'sqli-user' with permissions on
 #DATABASE: SqliDB;
-service mysql start
+service mysql restart
 mysql -u root -e "CREATE USER 'sqli-user'@'localhost' IDENTIFIED BY 'AxU3a9w-azMC7LKzxrVJ^tu5qnM_98Eb'"
 #echo "User Created"
 mysql -u root -e "GRANT ALL PRIVILEGES ON SqliDB.* TO 'sqli-user'@localhost IDENTIFIED BY 'AxU3a9w-azMC7LKzxrVJ^tu5qnM_98Eb' WITH GRANT OPTION"

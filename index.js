@@ -84,7 +84,7 @@ app.get('/result', function(req,res) {
         res.send(tpl('Result', html));
       });
     } else {
-      res.send(tpl('Fail', 'Your query failed <br>\'<b>' + search + '</b>\'')); // display failed sql query
+      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM (╯°□°)╯︵ ┻━┻ WHERE User=\'' + search + '\';</b>')); // display failed sql query
     }
   });
 });

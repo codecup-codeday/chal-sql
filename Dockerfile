@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-
+FROM ubuntu:14.04
+#also works with 16.04 & 18.04
 #sets cmdline interface as noninteractive for installing packages below
 env DEBIAN_FRONTEND="noninteractive"
 
