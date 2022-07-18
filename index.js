@@ -23,15 +23,11 @@ const db_config = {
 var connection = mysql.createConnection(db_config);
 
 
-connection.connect(function(err) {          // start connection and add flag     
+connection.connect(function(err) {          // start connection
     if(err) {                                     
         console.log('error when connecting to db:', err);
         setTimeout(handleDisconnect, 2000);
     }
-    var sql = "INSERT INTO users (User,Details) VALUES ('2JZmyhw*zFW+]F$!%^Y#9Pw-yxF[TPr7[CAh9@VWJ^&pxvv(&3A+sdVW+MWF!}JmY#2_>J}~J(_m%?ucHXL$Qz}jY>W$kFj7nfxV*D)ce@Tq/*(?4%@\iLVSy5a-DN{7', '" + flag + "' )";
-    connection.query(sql, function (err, result) {
-      if (err) handleDisconnect();
-    });
 });
 
 function handleDisconnect() {          // handles any disconnects from mysql
@@ -64,7 +60,8 @@ app.get('/', (req, res) => { // simple search form
   <footer>
   <p>Contact: Hege Refsnes</p>
   <p><a href="https://is.gd/hello109">hege@sus.com</a></p>
-  </footer>`));
+  </footer>
+  <div style="height: 150px"></div>`));
 });
 
 let search = '';
@@ -81,10 +78,15 @@ app.get('/result', function(req,res) {
     if (results) {
       res.render("/www/views/user-list.ejs", { userData: results }, function(err,html){ // render output as table
         if (err) throw err;
-        res.send(tpl('Result', html));
+        res.send(tpl('Result', `
+        <h1>Search the Database</h1>
+        <form action = "/search" method = "POST">
+        <input type = "text" name = "search" align = "justify"/><br><br>
+        <input type = "submit" value="Search" />
+        </form>`+ html + `<div style="height: 150px"></div>`));
       });
     } else {
-      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM (╯°□°)╯︵ ┻━┻ WHERE User=\'' + search + '\';</b>')); // display failed sql query┬─┬﻿
+      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM (╯°□°)╯︵ ┻━┻ WHERE User=\'' + search + '\';</b> <br>' + err)); // display failed sql query┬─┬﻿
     }
   });
 });

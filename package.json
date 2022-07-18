@@ -1,4 +1,11 @@
 {
+  "name": "chal-sql",
+  "version": "1.0.0",
+  "description": "simple dockerized ubuntu image with mysql and node",
+  "main": "index.js",
+  "repository": "https://github.com/codecup-codeday/chal-sql",
+  "author": "Jeffrey Li (JelBell1324)",
+  "license": "MIT",
   "dependencies": {
     "@srnd/codecup-genericwebsite": "^1.0.1",
     "body-parser": "^1.20.0",
