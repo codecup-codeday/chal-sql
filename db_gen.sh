@@ -1,7 +1,8 @@
 #start, set up mysql database
 #create user 'sqli-user' with permissions on
 #DATABASE: SqliDB;
-service mysql restart
+service mysql start
+service mysql restart 
 FLAG="${FLAG:-test}"
 mysql -u root -e "CREATE USER 'sqli-user'@'localhost' IDENTIFIED BY 'AxU3a9w-azMC7LKzxrVJ^tu5qnM_98Eb'"
 #echo "User Created"
