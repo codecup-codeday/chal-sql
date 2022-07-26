@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 const db_config = {
 	host     : 'localhost',
 	user     : 'sqli-user',
-	password : 'AxU3a9w-azMC7LKzxrVJ^tu5qnM_98Eb',
+	password : 'sKLngsJkZjy&rFHUzFATDJsCFx~e5QucuTde3Rkcextw&Ahg92t9QW^aZDdNuL4y%rzPs',
 	database : 'SqliDB'
 };
 
@@ -59,7 +59,6 @@ app.get('/', (req, res) => { // simple search form
 	</form>
   <footer>
   <p>Contact: Hege Refsnes</p>
-  <p><a href="https://is.gd/hello109">hege@sus.com</a></p>
   </footer>
   <div style="height: 150px"></div>`));
 });
@@ -83,10 +82,13 @@ app.get('/result', function(req,res) {
         <form action = "/search" method = "POST">
         <input type = "text" name = "search" align = "justify"/><br><br>
         <input type = "submit" value="Search" />
-        </form>`+ html + `<div style="height: 150px"></div>`));
+        </form>`+ html + `<footer>
+        <p>Contact: Hege Refsnes</p>
+        </footer>
+        <div style="height: 150px"></div>`));
       });
     } else {
-      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM (╯°□°)╯︵ ┻━┻ WHERE User=\'' + search + '\';</b> <br>' + err)); // display failed sql query┬─┬﻿
+      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM users WHERE User=\'' + search + '\';</b> <br>' + err)); // display failed sql query┬─┬﻿
     }
   });
 });

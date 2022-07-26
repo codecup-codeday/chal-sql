@@ -4,9 +4,9 @@
 service mysql start
 service mysql restart 
 FLAG="${FLAG:-test}"
-mysql -u root -e "CREATE USER 'sqli-user'@'localhost' IDENTIFIED BY 'AxU3a9w-azMC7LKzxrVJ^tu5qnM_98Eb'"
+mysql -u root -e "CREATE USER 'sqli-user'@'localhost' IDENTIFIED BY 'sKLngsJkZjy&rFHUzFATDJsCFx~e5QucuTde3Rkcextw&Ahg92t9QW^aZDdNuL4y%rzPs'"
 #echo "User Created"
-mysql -u root -e "GRANT SELECT, SHOW VIEW ON SqliDB.* TO 'sqli-user'@localhost IDENTIFIED BY 'AxU3a9w-azMC7LKzxrVJ^tu5qnM_98Eb'"
+mysql -u root -e "GRANT SELECT, SHOW VIEW ON SqliDB.* TO 'sqli-user'@localhost IDENTIFIED BY 'sKLngsJkZjy&rFHUzFATDJsCFx~e5QucuTde3Rkcextw&Ahg92t9QW^aZDdNuL4y%rzPs'"
 #echo "Privileges got"
 mysql -u root -e "CREATE DATABASE SqliDB"
 #echo "Database created"
