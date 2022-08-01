@@ -53,7 +53,7 @@ function handleDisconnect() {          // handles any disconnects from mysql
 app.get('/', (req, res) => { // simple search form
   res.send(tpl('Search', `
 	<h1>Search the Database</h1>
-	<form action = "/search" method = "POST">
+	<form action = "/result" method = "POST">
 	<input type = "text" name = "search" align = "justify"/><br><br>
 	<input type = "submit" value="Search" />
 	</form>
@@ -63,14 +63,8 @@ app.get('/', (req, res) => { // simple search form
   <div style="height: 150px"></div>`));
 });
 
-let search = '';
-app.post('/search', (req, res) => {
-  search = req.body.search;
-  res.redirect('/result');
-});
-
-
-app.get('/result', function(req,res) {
+app.post('/result', function(req,res) {
+  var search = req.body.search;
   var sql = `SELECT * FROM users WHERE User='${search}';`; // SQL query syntax checking for matching user
   connection.query(sql, function(err, results, fields){ // do the query
     if (err) handleDisconnect();
@@ -79,7 +73,7 @@ app.get('/result', function(req,res) {
         if (err) throw err;
         res.send(tpl('Result', `
         <h1>Search the Database</h1>
-        <form action = "/search" method = "POST">
+        <form action = "/result" method = "POST">
         <input type = "text" name = "search" align = "justify"/><br><br>
         <input type = "submit" value="Search" />
         </form>`+ html + `<footer>
@@ -88,7 +82,7 @@ app.get('/result', function(req,res) {
         <div style="height: 150px"></div>`));
       });
     } else {
-      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM users WHERE User=\'' + search + '\';</b> <br>' + err)); // display failed sql query┬─┬﻿
+      res.send(tpl('Fail', 'Your query failed <br><b>SELECT * FROM users WHERE User=\'' + search + '\';</b> <br>' + err)); // display failed sql query
     }
   });
 });
