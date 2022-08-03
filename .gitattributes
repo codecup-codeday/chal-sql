@@ -1,0 +1,4 @@
+# Ensure all files use LF.
+*.sh         eol=lf
+*.js         eol=lf
+*.ejs        eol=lf
